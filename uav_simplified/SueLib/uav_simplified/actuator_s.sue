@@ -1,0 +1,22 @@
+proc SCHEMATIC_actuator_s {} {
+make input -name y1 -origin {2320 1440}
+make input -name y2 -origin {2320 1520}
+make output -name a -origin {2400 1490}
+}
+
+proc ICON_actuator_s args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {coeff 1.0}}
+icon_term -type input -origin {-60 0} -name y1
+icon_term -type input -origin {-60 20} -name y2
+icon_term -type output -origin {60 10} -name a
+icon_property -origin {-50 0} -label y1
+icon_property -origin {-50 20} -label y2
+icon_property -origin {50 10} -anchor e -label a
+icon_property -origin {-60 -50} -label {$name}
+icon_property -origin {-50 -30} -label actuator_s
+  icon_line -60 -40 60 -40 60 40 -60 40 -60 -40
+  icon_property -origin {-70 110} -type user -name name -default x
+icon_property -origin {-60 60} -label {coeff=$coeff}
+  icon_property -origin {-70 130} -type user -name coeff -default 1.0
+}
+

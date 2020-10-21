@@ -1,0 +1,55 @@
+module: add4
+description:4-input adder 
+timing_sensitivity: 
+parameters:  
+inputs:  double in1, double in2
+         double in3, double in4
+outputs:  double out
+classes: add_example addfour();
+static_variables:  
+init:
+out = addfour.add(in1,in2,in3,in4); 
+
+code:  
+
+
+out = addfour.add(in1,in2,in3,in4);
+
+
+
+/*functions:
+double add(double in1,double in2,double in3, double in4){
+       double out;
+       out+=(in1>0?in1:0);
+       out+=(in2>0?in2:0);
+       out+=(in3>0?in3:0);
+       out+=(in4>0?in4:0);
+return(out);
+}
+*/
+
+//an attempt to customize a class
+//We can not customize a class in an independent file.
+//But accroding to munual,it should nave been.  
+custom_classes_definition:
+
+class add_example{
+   public:
+    add_example();   
+    ~add_example();
+    double add(double in1,double in2,double in3,double in4);
+    double out;
+};
+
+custom_classes_code:
+add_example::add_example(){
+ out = 0;
+}
+
+add_example::~add_example(){}
+
+double add_example::add(double in1,double in2,double in3,double in4){
+       out = 0;
+       out = in1+in2+in3+in4;
+       return(out);
+}

@@ -1,0 +1,25 @@
+module: sensor_io_s
+description: sensors that collect external analog signals
+timing_sensitivity: 
+parameters:  double coeff double s0
+inputs:  double ds
+outputs:  double is_1, double is_2 double f
+//f is the objective function which only used in simulation
+
+classes:  
+static_variables:  double s
+init:  
+s = s0;
+
+end:  
+code:  
+s = s + ds; 
+f = -0.5*s*s;
+
+if(s>=0){
+	is_1 = coeff*s;
+	is_2 = 0;
+}else{
+	is_1 = 0;
+	is_2 = abs(coeff*s);
+}

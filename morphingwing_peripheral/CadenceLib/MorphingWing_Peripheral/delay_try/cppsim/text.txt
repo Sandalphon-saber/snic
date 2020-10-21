@@ -1,0 +1,21 @@
+module: delay_try
+description: 
+timing_sensitivity: 
+parameters:  double dly, double bw
+inputs:  double input, double clk
+             double reset
+outputs:  double out
+classes:  
+static_variables:  
+init:  
+
+
+end:  
+code:  
+
+
+
+electrical_element:  
+functions:  
+custom_classes_definition:  
+custom_classes_code:  

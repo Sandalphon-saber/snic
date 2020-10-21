@@ -1,0 +1,2 @@
+module: top
+sim_order:  xi15 xi0 xi2 xi3 xi1 xi4 xi7 xi8 xi5 xi10 xi13 xi11 xi12 xi6 xi9 xi14

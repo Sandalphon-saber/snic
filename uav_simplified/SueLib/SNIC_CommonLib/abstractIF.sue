@@ -1,0 +1,33 @@
+proc SCHEMATIC_abstractIF {} {
+make input -name in_i -origin {1470 1040}
+make input -name clr -origin {1470 1060}
+make output -name out_v -origin {1620 1040}
+make LIF_simplified -name xi0 -v_th v_th -i_leak i_leak -v_rest v_rest -r_t r_t -rc rc -origin {1570 1040}
+  make_text -origin {1250 1210} -text {*r_time represents the duration of the refractory period}
+  make_text -origin {1250 1230} -text {*rc represents the product of capacitance and resistance,which also represents the time constant tau}
+}
+
+proc ICON_abstractIF args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {v_th 1.0} {i_leak 1.0} {v_rest -1.0} {r_t 1e-3} {rc 1.0}}
+icon_term -type input -origin {-100 0} -name in_i
+icon_term -type output -origin {50 0} -name out_v
+icon_term -type input -origin {-100 20} -name clr
+icon_property -origin {-90 20} -label clr
+icon_property -origin {-90 0} -label in_i
+icon_property -origin {40 0} -anchor e -label out_v
+icon_property -origin {-90 -50} -label {$name}
+icon_property -origin {-90 -30} -label abstractIF
+  icon_line -100 -40 50 -40 50 40 -100 40 -100 -40
+icon_property -origin {-90 60} -label {v_th=$v_th V}
+  icon_property -origin {-100 170} -type user -name name -default x
+  icon_property -origin {-100 190} -type user -name v_th -default 1.0
+icon_property -origin {-90 80} -label {i_leak=$i_leak nA}
+  icon_property -origin {-100 210} -type user -name i_leak -default 1.0
+  icon_property -origin {-100 230} -type user -name v_rest -default -1.0
+icon_property -origin {-90 100} -label {v_rest=$v_rest V}
+  icon_property -origin {-100 250} -type user -name r_t -default 1e-3
+icon_property -origin {-90 120} -label {r_t=$r_t s}
+icon_property -origin {-90 140} -label {rc=$rc}
+  icon_property -origin {-100 270} -type user -name rc -default 1.0
+}
+

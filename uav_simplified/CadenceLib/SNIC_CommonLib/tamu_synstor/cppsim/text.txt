@@ -1,0 +1,45 @@
+module: tamu_synstor
+description: model of tamu_synstor
+parameters:  double w0 double w_max double w_min
+inputs:  double in, double in_w, double fedback
+outputs:  double out
+classes:  
+
+static_variables: 
+// the Internal static var of fitting model of tamu_synstor
+double w  double t_u double t_d 
+
+//the Internal static var of Ideal model
+double alp double in_w_t
+
+init:  
+w = w0;
+
+in_w_t = in_w;
+alp = 15;
+
+code:
+// the behavior of fitting model when voltage=2.5V
+/*  
+if(fedback ==0){
+	out = in *w;
+}else{
+	out = -2.5 *w;
+	if(in == fedback && in ==2.5){
+	      t_d = 2.585e5*pow((w-701),-2.3116);
+	      w = 219.5*pow((t_d+Ts),-0.4326)+701;	
+	}else if(in == fedback && in == -2.5){
+	      t_u = 1.2873e99*pow(10530-w,-25.3614);
+	      w = -8089*pow((t_u+Ts),-0.03943)+10530; 
+	}
+}
+*/
+
+
+//the behavior of ideal model for uav
+
+w = w + alp*in_w_t*fedback;
+if(w>w_max) w=w_max;
+if(w<w_min) w=w_min;
+in_w_t = in_w;
+out = in *w;

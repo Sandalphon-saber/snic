@@ -1,0 +1,29 @@
+module: IF
+description: 
+timing_sensitivity: 
+parameters:  double v_th, double v_rest
+             double tau
+inputs:  double current_in, double clear
+outputs:  double spike
+classes:  
+static_variables:  double v0 double v
+init:  
+v0 = v_rest;
+v = v0;
+
+end:  
+code:  
+if(clear == -1){
+	 v=v_rest;
+	 v0=v;
+	 spike=0;
+}else{
+v = v0 + (Ts/tau)*(-(v0-v_rest)+current_in);
+spike = 0;
+v0 = v;
+if(v>v_th){
+	v=v_rest;
+	spike = 1;
+	v0 = v;
+}
+}

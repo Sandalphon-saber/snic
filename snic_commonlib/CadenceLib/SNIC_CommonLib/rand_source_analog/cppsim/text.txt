@@ -1,0 +1,14 @@
+module: rand_source_analog
+description: random signal generator
+timing_sensitivity: 
+parameters: double a double b
+inputs:  
+outputs: double out 
+classes:  
+static_variables:  
+init:  
+srand((int)time(0));
+
+end:  
+code:  
+out=(rand()/double(RAND_MAX))*(b-a)+a;

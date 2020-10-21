@@ -1,0 +1,23 @@
+proc SCHEMATIC_divider {} {
+make input -name dividend -origin {2800 1040}
+make input -name divisor -origin {2800 1120}
+make output -name ans -origin {2880 1080}
+}
+
+proc ICON_divider args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type input -origin {-40 0} -name dividend
+icon_term -type output -origin {40 0} -name ans
+icon_term -type input -origin {0 40} -orient R270 -name divisor
+icon_property -origin {40 0} -anchor e -label ans
+icon_property -origin {-60 -40} -label {$name}
+icon_property -origin {-20 -50} -label divider
+  icon_property -origin {-90 140} -type user -name name -default x
+  icon_arc -40 -40 40 40 -start 271 -extent 359
+  icon_line -10 0 10 0
+icon_property -origin {0 -10} -label 0
+icon_property -origin {0 10} -label 0
+icon_property -origin {-30 0} -label in1
+icon_property -origin {-10 30} -label in2
+}
+

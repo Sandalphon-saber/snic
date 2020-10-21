@@ -1,0 +1,30 @@
+proc SCHEMATIC_abstract_synapse {} {
+make input -name in -origin {3840 1040}
+make input -name in_w -origin {3840 1070}
+make input -orient R90 -name fedback -origin {3940 1020}
+make tamu_synstor -name xi0 -origin {3900 1050}
+make output -orient R90 -name out -origin {3940 1100}
+}
+
+proc ICON_abstract_synapse args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {w0 0.0} {w_min 0.0} {w_max 3000}}
+icon_term -type input -origin {-60 -20} -name in
+icon_term -type input -origin {-60 10} -name in_w
+icon_term -type input -origin {40 -40} -orient R90 -name fedback
+icon_term -type output -origin {40 40} -orient R90 -name out
+icon_property -origin {-50 -20} -label in
+icon_property -origin {-50 10} -label in_w
+icon_property -origin {10 -30} -label fedback
+icon_property -origin {50 20} -anchor e -label out
+icon_property -origin {-60 -60} -label {$name}
+icon_property -origin {-20 0} -label synapse
+  icon_line -60 -40 60 -40 60 40 -60 40 -60 -40
+  icon_property -origin {-70 160} -type user -name name -default x
+icon_property -origin {-60 60} -label {w0=$w0}
+icon_property -origin {-60 80} -label {w_min=$w_min}
+icon_property -origin {-60 100} -label {w_max=$w_max}
+  icon_property -origin {-70 190} -type user -name w0 -default 0.0
+  icon_property -origin {-70 210} -type user -name w_min -default 0.0
+  icon_property -origin {-70 230} -type user -name w_max -default 3000
+}
+

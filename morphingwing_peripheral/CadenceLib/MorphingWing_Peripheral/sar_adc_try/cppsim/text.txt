@@ -1,0 +1,118 @@
+module: sar_adc_try
+description: 12 bit sar_adc realized using c++
+the two parameters represent respectively the range of input and sampling frequency(represented by the number of time steps) 
+ 
+parameters:  double vref    int  clkdiv
+inputs:  double in, double clk  double reset
+outputs:  bool out[11:0]  int out_valid
+classes:  EdgeDetect clk_edge()
+static_variables: 
+  int i
+  int counter 
+  int tempout[12]
+  double temp
+
+  double vlow
+  double vhigh
+  double v
+
+init:  
+  // insure that in the begining,the out is zero,it is ok to delete this code
+  tempout = {0,0,0,0,0,0,0,0,0,0,0,0}; 
+  counter = 0;
+  vlow = 0;
+  vhigh = vref;
+  v = (vhigh+vlow)/2;
+  temp = in;
+  if(temp >= vref){
+	temp = vref;
+  }
+  for (i = 0;i<12;i++)
+	{
+	   if (temp >=v)  
+        {
+           tempout[11-i]=1;
+	       vlow = v;
+	       v = (vhigh+vlow)/2;
+        }
+       else 
+	    {
+	       tempout[11-i]=0;
+	       vhigh = v;
+	       v= (vhigh+vlow)/2;
+	    }
+    }
+
+  
+end:  
+code:  
+if (reset == 1) {
+  for (i=0;i<12;i++)
+    out.set_elem(i,0);
+  out_valid = 0;
+}
+
+else if(clk_edge.inp(clk)){
+	counter = counter + 1;
+	if(counter>clkdiv)
+	{
+		counter = 1;
+		temp = in;
+		if(temp >= vref){temp = vref;}
+		vlow = 0;
+        vhigh = vref;
+        v=(vhigh+vlow)/2;
+		for (i = 0;i<12;i++)
+		{  
+		   if (temp >=v)  
+			{
+			   tempout[11-i]=1;
+			   vlow = v;
+			   v = (vhigh+vlow)/2;
+			}
+		   else 
+			{
+			   tempout[11-i]=0;
+			   vhigh = v;
+			   v= (vhigh+vlow)/2;
+			}
+		}
+	}
+	for (i=0;i<12;i++) out.set_elem(i,tempout[i]);
+	out_valid = 1;
+
+}
+
+
+/*if(clk_edge.inp(clk)) {
+   
+    counter = counter + 1;
+  if (counter > clkdiv )
+    {
+      counter = 1;
+      temp = in;
+      bit = 11;
+    }
+  if (temp >=v)
+    {
+       tempout[bit]=1;
+	   vlow = v;
+	   v = (vhigh+vlow)/2;
+    }
+  else 
+    {
+	  tempout[bit]=0;
+	  vhigh = v;
+	  v= (vhigh+vlow)/2;
+    }
+   bit=bit-1;
+   if (bit <0)
+   {
+	   bit =11;
+           for (i=0;i<12;i++) out.set_elem(i,tempout[i]);
+           out_valid = 1;
+           vlow = 0;
+           vhigh = vref;
+           v=(vhigh+vlow)/2;
+   }	   
+}*/

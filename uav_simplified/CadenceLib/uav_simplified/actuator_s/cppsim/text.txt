@@ -1,0 +1,14 @@
+module: actuator_s
+description: actuation signal generation
+timing_sensitivity: 
+parameters:  double coeff
+inputs:  double y1, double y2
+outputs:  double a
+classes:  
+static_variables:  
+init:  
+
+
+end:  
+code:  
+a = coeff*(y1-y2);

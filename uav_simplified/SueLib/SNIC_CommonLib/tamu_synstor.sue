@@ -1,0 +1,33 @@
+proc SCHEMATIC_tamu_synstor {} {
+
+
+make input -name in -origin {960 240}
+make output -name out -origin {1040 320}
+make input -name in_w -origin {960 280}
+make input -name fedback -origin {960 320}
+
+
+}
+
+proc ICON_tamu_synstor args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {w0 1000} {w_max 3000} {w_min 0.0}}
+icon_term -type input -origin {-60 -10} -name in
+icon_term -type output -origin {40 50} -orient R90 -name out
+icon_term -type input -origin {40 -30} -orient R90 -name fedback
+icon_term -type input -origin {-60 20} -name in_w
+icon_property -origin {-50 -10} -label in
+icon_property -origin {10 -20} -label fedback
+icon_property -origin {50 40} -anchor e -label out
+icon_property -origin {-50 -40} -label {$name}
+icon_property -origin {-20 10} -label synstor
+  icon_line -60 -30 60 -30 60 50 -60 50 -60 -30
+  icon_property -origin {-90 170} -type user -name name -default x
+  icon_property -origin {-90 190} -type user -name w0 -default 1000
+icon_property -origin {-60 70} -label {w0 =$w0 nS}
+  icon_property -origin {-90 230} -type user -name w_max -default 3000
+icon_property -origin {-60 110} -label {w_max=$w_max}
+icon_property -origin {-50 20} -label in_w
+icon_property -origin {-60 90} -label {w_min=$w_min}
+  icon_property -origin {-90 210} -type user -name w_min -default 0.0
+}
+

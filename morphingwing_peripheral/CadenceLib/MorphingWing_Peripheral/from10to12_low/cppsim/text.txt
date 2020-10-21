@@ -1,0 +1,26 @@
+module: from10to12_low
+description: 
+timing_sensitivity: 
+parameters:  
+inputs:  bool in[9:0]
+outputs:  bool out[11:0]
+classes:  
+static_variables:  
+init:  
+
+
+end:  
+code:  
+
+
+  
+int i;
+int temp;
+
+for (i=0;i<10;i++)
+  {  
+     temp = int(in.get_elem(i));
+     out.set_elem(i,temp);
+  }
+out.set_elem(10,0);
+out.set_elem(11,0);

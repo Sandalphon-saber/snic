@@ -1,0 +1,28 @@
+proc SCHEMATIC_add4 {} {
+
+make input -name in1 -origin {1040 320}
+make input -name in2 -origin {1040 370}
+make input -name in3 -origin {1040 420}
+make input -name in4 -origin {1040 460}
+make output -name out -origin {1120 400}
+
+}
+
+proc ICON_add4 args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type input -origin {-50 -40} -name in1
+icon_term -type input -origin {-50 -10} -name in2
+icon_term -type input -origin {-50 20} -name in3
+icon_term -type input -origin {-50 50} -name in4
+icon_term -type output -origin {50 0} -name out
+icon_property -origin {-40 -40} -label in1
+icon_property -origin {-40 -10} -label in2
+icon_property -origin {-40 20} -label in3
+icon_property -origin {-40 50} -label in4
+icon_property -origin {40 0} -anchor e -label out
+icon_property -origin {-50 -80} -label {$name}
+icon_property -origin {-10 10} -label add4
+  icon_line -50 -70 50 -70 50 90 -50 90 -50 -70
+  icon_property -origin {-80 110} -type user -name name -default x
+}
+

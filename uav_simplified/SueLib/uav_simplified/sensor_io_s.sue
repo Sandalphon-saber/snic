@@ -1,0 +1,29 @@
+proc SCHEMATIC_sensor_io_s {} {
+
+make output -name is_1 -origin {400 160}
+make output -name is_2 -origin {400 320}
+make output -name f -origin {400 240}
+make input -name ds -origin {320 240}
+
+}
+
+proc ICON_sensor_io_s args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {coeff 1.0} {s0 5.0}}
+icon_term -type output -origin {50 0} -name is_1
+icon_term -type output -origin {50 20} -name is_2
+icon_term -type output -origin {50 -30} -name f
+icon_term -type input -origin {-50 0} -name ds
+icon_property -origin {-40 0} -label ds
+icon_property -origin {40 0} -anchor e -label is_1
+icon_property -origin {40 20} -anchor e -label is_2
+icon_property -origin {-50 -50} -label {$name}
+icon_property -origin {-40 -30} -label sensor_io
+  icon_line -50 -40 50 -40 50 40 -50 40 -50 -40
+  icon_property -origin {-80 100} -type user -name name -default x
+  icon_property -origin {-80 120} -type user -name coeff -default 1.0
+icon_property -origin {-50 60} -label {coeff=$coeff}
+icon_property -origin {-50 80} -label {s0=$s0}
+  icon_property -origin {-80 140} -type user -name s0 -default 5.0
+icon_property -origin {40 -30} -label f
+}
+

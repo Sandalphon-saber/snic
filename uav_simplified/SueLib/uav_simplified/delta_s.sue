@@ -1,0 +1,46 @@
+proc SCHEMATIC_delta_s {} {
+make input -name a -origin {1280 960}
+make output -name delta_s -origin {1650 960}
+make constant -name xi0 -consval gsa -origin {1320 1070}
+make multiplier -name xi1 -origin {1370 960}
+make add2 -name xi3 -origin {1620 960}
+make rand_source_analog -name xi2 -a sen_min -b sen_max -origin {1560 1080}
+  make_wire 1280 960 1330 960
+  make_wire 1360 1070 1370 1070
+  make_wire 1370 1000 1370 1070
+  make_wire 1410 960 1590 960
+  make_wire 1580 1090 1620 1090
+  make_wire 1620 990 1620 1090
+  make_text -origin {1280 1200} -text {*the module simulate the modification of system state by actuation signal and environment noise}
+}
+
+proc ICON_delta_s args {
+
+
+
+
+
+
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {gsa 1.0} {sen_min 0} {sen_max 1.0}}
+icon_term -type input -origin {-40 10} -name a
+icon_term -type output -origin {40 10} -name delta_s
+icon_property -origin {-30 10} -label a
+icon_property -origin {30 10} -anchor e -label delta_s
+icon_property -origin {-40 -40} -label {$name}
+icon_property -origin {-30 -20} -label delta_s
+  icon_line -40 -30 40 -30 40 30 -40 30 -40 -30
+  icon_property -origin {-80 130} -type user -name name -default x
+icon_property -origin {-40 40} -label {gsa=$gsa}
+icon_property -origin {-40 60} -label {sen_min=$sen_min}
+icon_property -origin {-40 80} -label {sen_max=$sen_max}
+  icon_property -origin {-80 150} -type user -name gsa -default 1.0
+  icon_property -origin {-80 170} -type user -name sen_min -default 0
+  icon_property -origin {-80 190} -type user -name sen_max -default 1.0
+
+
+
+
+
+
+}
+

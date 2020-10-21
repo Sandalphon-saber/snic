@@ -1,0 +1,26 @@
+proc SCHEMATIC_IF {} {
+make output -name spike -origin {3120 1280}
+make input -name current_in -origin {2960 1280}
+make input -name clear -origin {2960 1360}
+}
+
+proc ICON_IF args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {v_th -65} {v_rest -70} {tau 10}}
+icon_term -type input -origin {-70 0} -name current_in
+icon_term -type input -origin {-70 30} -name clear
+icon_term -type output -origin {60 10} -name spike
+  icon_line -70 -30 60 -30 60 50 -70 50 -70 -30
+icon_property -origin {-60 -40} -label {$name}
+icon_property -origin {-60 -20} -label IF
+icon_property -origin {-60 0} -label current_in
+icon_property -origin {-60 30} -label clear
+icon_property -origin {30 10} -label spike
+icon_property -origin {-70 60} -label {v_th = $v_th}
+icon_property -origin {-70 80} -label {v_rest = $v_rest}
+icon_property -origin {-70 100} -label {tau = $tau}
+  icon_property -origin {-70 140} -type user -name name -default x
+  icon_property -origin {-70 170} -type user -name v_th -default -65
+  icon_property -origin {-70 190} -type user -name v_rest -default -70
+  icon_property -origin {-70 210} -type user -name tau -default 10
+}
+

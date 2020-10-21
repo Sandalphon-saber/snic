@@ -1,0 +1,102 @@
+proc SCHEMATIC_snic2_2 {} {
+
+make input -name x1 -origin {800 100}
+make input -name x2 -origin {800 260}
+make input -orient R90 -name z1 -origin {1020 50}
+make input -orient R90 -name z2 -origin {1260 40}
+make name_net -name x1 -origin {1120 100}
+make name_net -name x2 -origin {1120 260}
+make name_net -name clr -origin {890 610}
+make output -name y1 -origin {1080 600}
+make output -name y2 -origin {1340 600}
+make name_net -orient R270 -name clr -origin {1190 620}
+make constant -name xi24 -origin {830 620}
+make abstractIF -name xi20 -v_th 60 -i_leak 0.2 -v_rest 0 -r_time 0 -rc 1.0/0.5 -origin {1030 600}
+make abstractIF -name xi21 -v_th 60 -i_leak 0.2 -v_rest 0 -r_time 0 -rc 1.0/0.5 -origin {1290 600}
+make input -name x1_w -origin {800 130}
+make input -name x2_w -origin {800 290}
+make name_net -name x1_w -origin {1120 130}
+make name_net -name x2_w -origin {1160 290}
+make tamu_synstor -name xi0 -w0 w1 -w_max w_max -origin {980 110}
+make tamu_synstor -name xi1 -w0 w2 -w_max w_max -origin {1220 110}
+make tamu_synstor -name xi4 -w0 w3 -w_max w_max -origin {980 270}
+make add2 -orient R90 -name xi2 -origin {1260 450}
+make add2 -orient R90 -name xi3 -origin {1020 440}
+make name_net -orient RXY -name o11 -origin {1020 160}
+make name_net -name o11 -origin {990 440}
+make tamu_synstor -name xi5 -w0 w4 -w_max w_max -origin {1220 270}
+make name_net -orient RXY -name o12 -origin {1260 160}
+make name_net -name o12 -origin {1230 450}
+  make_wire 890 620 930 620
+  make_wire 890 610 890 620
+  make_wire 870 620 890 620
+  make_wire 1120 100 1160 100
+  make_wire 1120 260 1160 260
+  make_wire 920 260 800 260
+  make_wire 920 100 800 100
+  make_wire 920 130 800 130
+  make_wire 920 290 800 290
+  make_wire 1120 130 1160 130
+  make_wire 1080 230 1080 60
+  make_wire 1260 60 1320 60
+  make_wire 1260 60 1260 40
+  make_wire 1260 60 1260 80
+  make_wire 1260 210 1260 240
+  make_wire 1320 210 1320 60
+  make_wire 1020 60 1080 60
+  make_wire 1020 230 1020 240
+  make_wire 1260 210 1320 210
+  make_wire 1020 50 1020 60
+  make_wire 1020 60 1020 80
+  make_wire 1020 230 1080 230
+  make_wire 1020 320 1020 410
+  make_wire 1260 320 1260 420
+  make_wire 1020 470 1020 510
+  make_wire 1020 510 910 510
+  make_wire 910 510 910 600
+  make_wire 910 600 930 600
+  make_wire 1260 480 1260 520
+  make_wire 1260 520 1170 520
+  make_wire 1170 520 1170 600
+  make_wire 1170 600 1190 600
+
+}
+
+proc ICON_snic2_2 args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {w_max 1.0} {w1 1.0} {w4 1.0} {w3 1.0} {w2 1.0} {w_min 0.0}}
+icon_term -type input -origin {-80 -40} -name x1
+icon_term -type input -origin {-80 -20} -name x2
+icon_term -type output -origin {40 80} -orient R90 -name y2
+icon_term -type output -origin {0 80} -orient R90 -name y1
+icon_term -type input -origin {80 -40} -orient RXY -name z1
+icon_term -type input -origin {80 0} -orient RXY -name z2
+icon_term -type input -origin {-80 20} -name x1_w
+icon_term -type input -origin {-80 50} -name x2_w
+icon_property -origin {-70 -40} -label x1
+icon_property -origin {-70 -20} -label x2
+icon_property -origin {60 -40} -label z1
+icon_property -origin {60 0} -label z2
+icon_property -origin {10 60} -anchor e -label y1
+icon_property -origin {50 60} -anchor e -label y2
+icon_property -origin {-80 -90} -label {$name}
+icon_property -origin {-70 -70} -label crossbar
+  icon_line -80 -80 80 -80 80 80 -80 80 -80 -80
+  icon_property -origin {-110 180} -type user -name name -default x
+icon_property -origin {-10 -20} -label SNIC
+icon_property -origin {-70 20} -label x1_w
+icon_property -origin {-70 50} -label x2_w
+  icon_property -origin {-110 210} -type user -name w_max -default 1.0
+icon_property -origin {100 130} -label {w_max=$w_max}
+  icon_property -origin {-110 270} -type user -name w1 -default 1.0
+  icon_property -origin {-110 360} -type user -name w4 -default 1.0
+  icon_property -origin {-110 330} -type user -name w3 -default 1.0
+  icon_property -origin {-110 300} -type user -name w2 -default 1.0
+icon_property -origin {100 40} -label {w1=$w1}
+icon_property -origin {100 60} -label {w2=$w2}
+icon_property -origin {100 80} -label {w3=$w3}
+icon_property -origin {100 100} -label {w4=$w4}
+icon_property -origin {-10 10} -label 2*2
+icon_property -origin {100 150} -label {w_min=$w_min}
+  icon_property -origin {-110 240} -type user -name w_min -default 0.0
+}
+

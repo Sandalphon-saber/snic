@@ -1,0 +1,23 @@
+module: double2bool8
+description: 
+timing_sensitivity: 
+parameters:  double scale1
+inputs:  double in
+outputs:  bool out[7:0]
+classes:  
+static_variables:  double scale_factor
+init:  
+scale_factor = pow(2.0,scale1);
+
+
+end:  
+code:  
+int in_int,i,bit_val;
+
+in_int = (int) floor(in * scale_factor);
+
+for (i=0;i<8;i++)
+  {
+    bit_val = ((in_int & (1<<i) ) == 0) ? 0 : 1;
+    out.set_elem(i,bit_val);
+  }  

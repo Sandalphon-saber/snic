@@ -1,0 +1,14 @@
+module: dac_try
+description: 
+timing_sensitivity: 
+parameters:  
+inputs:  double in, double clk
+             double rst
+outputs:  double out
+classes:  
+static_variables:  
+init:  
+
+
+end:  
+code:  

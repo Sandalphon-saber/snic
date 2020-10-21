@@ -1,0 +1,28 @@
+module: cnt_synstor
+description: behavioral model of synstor-but because lack data,the formula and parameters are set arbitrarily
+timing_sensitivity: 
+parameters:  double w0, double w_max,double w_min
+inputs:  double in, double fedback
+             double in_w
+outputs:  double out
+classes:  
+static_variables:  double w double para_up double para_down
+init:  
+w = w0;
+para_up=0.5;
+para_down=0.1;
+
+code:  
+//Due to the lack of data, we only gave an inaccurate model based on the device behavior, which needs to be improved later
+if(fedback ==0){
+	out = in *w;
+}else{
+	out=0;
+	if(in == (fedback && in ==1.75){
+		w = w*(1-para_down);
+	}else if(in == (fedback && in == -1.75){
+		para_up = 1/para_up;
+		w = w+1/pow(10,para_up*(w+1));
+	}
+}
+

@@ -1,0 +1,18 @@
+module: divider
+description: 
+timing_sensitivity: 
+parameters:  
+inputs:  double dividend, double divisor
+outputs:  double ans
+classes:  
+static_variables:  
+init:  
+
+
+end:  
+code:  
+if(divisor==0){
+   printf("error the divisor can not be 0");
+   exit(1);
+} 
+ans = dividend/divisor;

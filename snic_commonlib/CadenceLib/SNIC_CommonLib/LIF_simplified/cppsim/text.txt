@@ -1,0 +1,59 @@
+module: LIF_simplified
+description: a simple implementation of LIF 
+//r_time represents the duration of the refractory period
+//rc presents the product of capacitance and resistance,
+// which also represents the time constant tau
+
+parameters:  double v_th, double i_leak, double v_rest, double r_t double rc
+inputs:  double i_in, int clr
+outputs:  double v_out
+classes: 
+ 
+static_variables:  double vm int r_t_number int flag
+
+init:  
+vm=v_rest;
+r_t_number=r_t/Ts;
+flag = 0;// a flag indicating whether the module is in refractory
+
+end:  
+code:
+//Asynchronous reset, WTA
+if(clr==-1){
+	vm = v_rest;
+	flag=0;
+	r_t_number=r_t/Ts;
+	v_out = 0;
+	
+}else{
+	if(flag == 1){
+		v_out = 0;
+		r_t_number-=1;
+		if(r_t_number<=0){
+			flag=0;
+			r_t_number=abs_t/Ts;	
+		}
+	}
+ 
+	if(flag == 0){  
+	   // chen's formula --> -leak
+	   vm = vm + i_in*rc - i_leak;
+       // for us,it may be -leak*rc;
+	   // According to our hypothesis,the IF curcuit has a diode in front of it,so the curr can only be positive
+	   //vm=vm+ (i_in<0?0:i_in*rc)-i_leak*rc;
+	   // vm can not be lower than v_rest
+	   vm=vm>v_rest?vm:v_rest;
+	   if(vm>=v_th){
+	   		v_out = 1;
+			vm = v_rest;
+			if(r_t!=0){
+			  flag=1;		 
+			}
+        }
+		else{
+			v_out=0;
+		} 
+	}
+}
+	
+

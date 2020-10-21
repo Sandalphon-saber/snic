@@ -1,0 +1,39 @@
+module: input_from_file
+description: read  data from two files--so for, we can not read file accroding to parameters
+timing_sensitivity: 
+parameters:  
+inputs:  double_interp clk
+outputs: double vauxp_0_out double vauxp_1_out 
+classes: EdgeDetect clk_edge()
+	 List list1();
+	 List list2();
+static_variables:  int counter;
+init:  
+
+/*list1.load("Vx.dat");
+list1.reset();
+list2.load("Vz1.dat");
+list2.reset();*/
+
+list1.load("vauxp_0.dat");
+list1.reset();
+list2.load("vauxp_1.dat");
+list2.reset();
+vauxp_0_out = list1.read();
+vauxp_1_out = list2.read();
+counter = 0;
+end:  
+code:  
+//loop read
+if(clk_edge.inp(clk)){
+  counter++;
+  // set frequency for read data--TODO:we can make the frequency as a parameter
+  if(counter >8)//100 8000
+   {  
+      counter = 1;
+      vauxp_0_out = list1.read();
+      vauxp_1_out = list2.read();
+   }
+}
+
+

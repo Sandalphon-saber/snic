@@ -1,0 +1,22 @@
+module: from33to16_23to8
+description: 
+timing_sensitivity: 
+parameters:  
+inputs:  bool in[32:0]
+outputs:  bool out[15:0]
+classes:  
+static_variables:  
+init:  
+
+
+end:  
+code:
+  
+int i;
+int temp;
+
+for (i=0;i<16;i++)
+  {  
+     temp = int(in.get_elem(i+8));
+     out.set_elem(i,temp);
+  }

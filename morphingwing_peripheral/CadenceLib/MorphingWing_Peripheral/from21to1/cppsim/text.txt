@@ -1,0 +1,17 @@
+module: from21to1
+description: 
+timing_sensitivity: 
+parameters:  
+inputs:  bool in[20:0]
+outputs:  bool out
+classes:  
+static_variables:  
+init:  
+
+
+end:  
+code:  
+
+out = in.get_elem(20);
+
+ 

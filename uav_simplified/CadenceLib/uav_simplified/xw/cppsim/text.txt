@@ -1,0 +1,14 @@
+module: xw
+description: the width of input pulses which is used for modification of synstor conductance 
+timing_sensitivity: 
+parameters:  double alpha
+inputs:  double is
+outputs:  double xw
+classes:  
+static_variables:  
+init:  
+
+
+end:  
+code:  
+xw = 1/(1+exp(-(is-alpha)));

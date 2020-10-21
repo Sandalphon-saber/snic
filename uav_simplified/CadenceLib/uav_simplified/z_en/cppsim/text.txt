@@ -1,0 +1,33 @@
+module: z_en
+description: fedback signal generation.Not only need generate feedback signal this moment,but also need generate feedback signal next monent and save it in a register.the next moment's signal can be used in the modification of w next monent
+timing_sensitivity: 
+parameters:  double tta
+inputs:  double y
+outputs:  double zp, double zn, double zn_next
+classes:  
+static_variables:  double zpp, double znn, int flag
+init:  
+zpp = 0;
+znn = 0;
+flag = 0;
+end:  
+code:
+if(y==0 && flag == 1){  
+	   zp = 0;
+	   zn = znn;
+	   zpp = 0;
+	   znn = -1*tta*y;
+	   flag = 0;
+}else if(y==1){
+	   flag = 1;
+	   zp = tta*y;
+	   zn = 0;
+	   zpp = 0;
+	   znn = -1*tta*y;
+}else{
+	   zp = tta*y;
+	   zn = 0;
+	   zpp = 0;
+	   znn = -1*tta*y;	   
+}
+zn_next = znn;

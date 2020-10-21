@@ -1,0 +1,22 @@
+proc SCHEMATIC_rand_source_analog {} {
+
+
+make output -name out -origin {480 400}
+
+
+}
+
+proc ICON_rand_source_analog args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {a 0} {b 1}}
+icon_term -type output -origin {20 10} -name out
+  icon_property -origin {-110 90} -type user -name name -default x
+icon_property -origin {10 10} -anchor e -label out
+icon_property -origin {-90 -40} -label {$name}
+icon_property -origin {-90 -20} -label rand_source_analog
+  icon_line -100 -30 20 -30 20 30 -100 30 -100 -30
+  icon_property -origin {-110 110} -type user -name a -default 0
+  icon_property -origin {-110 130} -type user -name b -default 1
+icon_property -origin {-90 40} -label {a=$a}
+icon_property -origin {-90 60} -label {b=$b}
+}
+
