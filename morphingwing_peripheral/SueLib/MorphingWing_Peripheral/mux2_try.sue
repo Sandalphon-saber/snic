@@ -1,0 +1,27 @@
+proc SCHEMATIC_mux2_try {} {
+make output -name out<11:0> -origin {1760 880}
+make input -orient R270 -name S -origin {1720 960}
+make input -name in0<11:0> -origin {1680 830}
+make input -name in1<11:0> -origin {1680 920}
+}
+
+proc ICON_mux2_try args {
+
+
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type output -origin {40 20} -name out<11:0>
+icon_term -type input -origin {0 80} -orient R270 -name S
+icon_term -type input -origin {-40 -10} -name in0<11:0>
+icon_term -type input -origin {-40 30} -name in1<11:0>
+icon_property -origin {-100 -30} -label in0<11:0>
+icon_property -origin {-100 50} -label in1<11:0>
+icon_property -origin {0 60} -label S
+icon_property -origin {100 0} -anchor e -label out<11:0>
+icon_property -origin {-10 -70} -label {$name}
+  icon_line -40 -60 40 -20 40 60 -40 100 -40 -60
+  icon_property -origin {-80 140} -type user -name name -default x
+icon_property -origin {-30 -20} -label mux2_try
+
+
+}
+

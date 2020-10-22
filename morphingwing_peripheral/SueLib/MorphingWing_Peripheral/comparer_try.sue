@@ -1,0 +1,18 @@
+proc SCHEMATIC_comparer_try {} {
+make output -name out -origin {4550 2260}
+make input -name in0<11:0> -origin {4500 2240}
+make input -name in1<11:0> -origin {4500 2290}
+}
+
+proc ICON_comparer_try args {
+  icon_setup $args {{origin {0 0}} {orient R0}}
+icon_term -type output -origin {40 0} -name out
+icon_term -type input -origin {-10 -20} -name in0<11:0>
+icon_term -type input -origin {-10 20} -name in1<11:0>
+  icon_arc -20 -30 40 30 -start 0 -extent 359
+  icon_line 10 -10 20 0 10 10 10 10
+icon_property -origin {50 10} -label out
+icon_property -origin {-80 -40} -label in0<11:0>
+icon_property -origin {-80 0} -label in1<11:0>
+}
+

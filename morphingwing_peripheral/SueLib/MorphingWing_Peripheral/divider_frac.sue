@@ -1,0 +1,32 @@
+proc SCHEMATIC_divider_frac {} {
+make input -name aclk -origin {70 -40}
+make input -name s_axis_dividend_tdata<11:0> -origin {70 30}
+make input -name s_axis_dividend_tvaild -origin {70 90}
+make input -name s_axis_divisor_tdata<11:0> -origin {70 140}
+make input -name s_axis_divisor_tvaild -origin {70 190}
+make output -name m_axis_dout_tdata<23:0> -origin {230 20}
+make output -name m_axis_dout_tvaild -origin {230 100}
+}
+
+proc ICON_divider_frac args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type input -origin {-110 -10} -name aclk
+icon_term -type input -origin {-110 10} -name s_axis_dividend_tdata<11:0>
+icon_term -type input -origin {-110 30} -name s_axis_dividend_tvaild
+icon_term -type input -origin {-110 50} -name s_axis_divisor_tdata<11:0>
+icon_term -type input -origin {-110 70} -name s_axis_divisor_tvaild
+icon_term -type output -origin {130 -10} -name m_axis_dout_tdata<23:0>
+icon_term -type output -origin {130 60} -name m_axis_dout_tvaild
+icon_property -origin {-100 -10} -label aclk
+icon_property -origin {-100 10} -label s_axis_dividend_tdata<11:0>
+icon_property -origin {-100 30} -label s_axis_dividend_tvaild
+icon_property -origin {-100 50} -label s_axis_divisor_tdata<11:0>
+icon_property -origin {-100 70} -label s_axis_divisor_tvaild
+icon_property -origin {130 -20} -anchor e -label m_axis_dout_tdata<23:0>
+icon_property -origin {-100 -60} -label {$name}
+icon_property -origin {-100 -40} -label divider_frac
+  icon_line -110 -50 130 -50 130 90 -110 90 -110 -50
+  icon_property -origin {-110 130} -type user -name name -default x
+icon_property -origin {20 60} -label m_axis_dout_tvaild
+}
+

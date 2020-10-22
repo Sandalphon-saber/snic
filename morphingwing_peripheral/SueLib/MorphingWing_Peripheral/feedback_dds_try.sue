@@ -1,0 +1,29 @@
+proc SCHEMATIC_feedback_dds_try {} {
+make input -name sys_clk -origin {400 320}
+make input -name sys_rst -origin {400 360}
+make input -name y<11:0> -origin {400 400}
+make output -name v_z<10:0> -origin {480 320}
+make output -name dac_data<1:0> -origin {480 360}
+make output -name dac_data_valid -origin {480 400}
+}
+
+proc ICON_feedback_dds_try args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type input -origin {-100 -10} -name sys_clk
+icon_term -type input -origin {-100 10} -name sys_rst
+icon_term -type input -origin {-100 30} -name y<11:0>
+icon_term -type output -origin {100 -10} -name v_z<10:0>
+icon_term -type output -origin {100 10} -name dac_data<1:0>
+icon_term -type output -origin {100 30} -name dac_data_valid
+icon_property -origin {-90 -10} -label sys_clk
+icon_property -origin {-90 10} -label sys_rst
+icon_property -origin {-90 30} -label y<11:0>
+icon_property -origin {90 -10} -anchor e -label v_z<10:0>
+icon_property -origin {-90 -60} -label {$name}
+icon_property -origin {-90 -40} -label feedback_dds_try
+  icon_line -100 -50 100 -50 100 50 -100 50 -100 -50
+  icon_property -origin {-90 80} -type user -name name -default x
+icon_property -origin {10 10} -label dac_data<1:0>
+icon_property -origin {10 30} -label dac_data_valid
+}
+

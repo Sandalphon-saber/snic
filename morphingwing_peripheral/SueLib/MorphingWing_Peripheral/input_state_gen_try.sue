@@ -1,0 +1,123 @@
+proc SCHEMATIC_input_state_gen_try {} {
+make state_gen_mult_try -name xi2 -origin {340 70}
+make mux2_16_try -name xi3 -origin {950 -40}
+make comparer_16_try -name xi5 -origin {740 130}
+make input -name drag_force_d<11:0> -origin {-680 70}
+make input -name lift_force_d<11:0> -origin {-670 380}
+make output -name in_state_d<15:0> -origin {1080 0}
+make double2bool16 -name xi7 -origin {140 -210}
+make constant_try -name xi9 -consval 653 -origin {-70 -210}
+make constant_try -name xi10 -consval 4288975995 -origin {-70 -90}
+make from33to16_23to8 -name xi11 -origin {580 130}
+make double2bool16 -name xi12 -origin {710 230}
+make constant_try -name xi13 -consval 25600 -origin {500 230}
+make double2bool16 -name xi14 -origin {870 -30}
+make constant_try -name xi15 -consval 25600 -origin {650 -30}
+make delay_1_try -name xi4 -dly 4 -origin {920 310}
+make input -name sys_clk -origin {-670 300}
+make input -name sys_rst -origin {-670 340}
+make from33to16_23to8 -name xi16 -origin {580 40}
+make input -name lift_force_d_valid -origin {-670 410}
+make output -name in_state_d_valid -origin {1060 300}
+make delay_12_try -name xi0 -dly 104 -origin {-480 80}
+make divider_frac -name xi1 -origin {-180 70}
+make double2bool32 -name xi8 -origin {150 -80}
+make from24to16 -name xi6 -origin {80 60}
+  make_wire -670 380 -340 380
+  make_wire -340 120 -290 120
+  make_wire -670 410 -320 410
+  make_wire -320 140 -290 140
+  make_wire -320 100 -290 100
+  make_wire -290 60 -360 60
+  make_wire -50 60 10 60
+  make_wire 150 -80 180 -80
+  make_wire 180 90 240 90
+  make_wire 0 -200 40 -200
+  make_wire 210 -200 210 50
+  make_wire 140 -200 210 -200
+  make_wire 240 50 210 50
+  make_wire 180 -80 180 90
+  make_wire 50 -80 0 -80
+  make_wire 240 110 -10 110
+  make_wire -360 230 -10 230
+  make_wire 440 80 460 80
+  make_wire 460 140 480 140
+  make_wire 570 240 610 240
+  make_wire 710 240 730 240
+  make_wire 730 200 750 200
+  make_wire 720 -20 770 -20
+  make_wire 1020 300 1060 300
+  make_wire -50 130 180 130
+  make_wire 820 300 180 300
+  make_wire 820 320 -10 320
+  make_wire 460 50 480 50
+  make_wire 240 70 130 70
+  make_wire -580 110 -590 110
+  make_wire -590 340 -670 340
+  make_wire -590 340 820 340
+  make_wire -580 90 -630 90
+  make_wire -630 300 -360 300
+  make_wire -630 300 -670 300
+  make_wire 620 50 910 50
+  make_wire 910 -40 950 -40
+  make_wire 910 -40 910 50
+  make_wire 820 170 990 170
+  make_wire 1030 0 1080 0
+  make_wire 870 -20 950 -20
+  make_wire -290 80 -440 80
+  make_wire -630 90 -630 300
+  make_wire -680 70 -580 70
+  make_wire -10 110 -10 230
+  make_wire -10 230 -10 320
+  make_wire -590 110 -590 340
+  make_wire 460 50 460 80
+  make_wire 460 80 460 140
+  make_wire 950 -20 950 40
+  make_wire 750 140 620 140
+  make_wire 730 200 730 240
+  make_wire 990 60 990 170
+  make_wire -360 60 -360 230
+  make_wire -360 230 -360 300
+  make_wire -320 100 -320 140
+  make_wire -320 140 -320 410
+  make_wire -340 120 -340 380
+  make_wire 180 130 180 300
+  make_wire 10 60 10 70
+  make_text -origin {-660 560} -text {*This module is the core processing  flow for input signals }
+  make_text -origin {290 -150} -text {*Limited by the software,some modules are required to do digit change }
+}
+
+proc ICON_input_state_gen_try args {
+
+
+
+
+
+
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type output -origin {150 110} -name in_state_d<15:0>
+icon_term -type input -origin {-10 20} -name drag_force_d<11:0>
+icon_term -type input -origin {-10 60} -name lift_force_d<11:0>
+icon_term -type input -origin {-10 100} -name sys_clk
+icon_term -type input -origin {-10 120} -name sys_rst
+icon_term -type input -origin {-10 80} -name lift_force_d_valid
+icon_term -type output -origin {150 130} -name in_state_d_valid
+  icon_line -10 0 -10 140 150 140 150 0 -10 0
+icon_property -origin {-10 -10} -label {$name}
+icon_property -origin {0 20} -label drag_force_d<11:0>
+icon_property -origin {0 60} -label lift_force_d<11:0>
+icon_property -origin {0 80} -label lift_force_d_valid
+icon_property -origin {0 100} -label sys_clk
+icon_property -origin {0 120} -label sys_rst
+icon_property -origin {50 110} -label in_state_d<15:0>
+icon_property -origin {50 130} -label in_state_d_valid
+  icon_property -origin {-20 170} -type user -name name -default x
+icon_property -origin {90 -10} -label input_state_gen
+
+
+
+
+
+
+}
+

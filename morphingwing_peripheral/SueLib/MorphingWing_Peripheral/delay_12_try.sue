@@ -1,0 +1,27 @@
+proc SCHEMATIC_delay_12_try {} {
+
+make input -name clk -origin {880 920}
+make input -name rst -origin {880 960}
+make input -name in<11:0> -origin {880 880}
+make output -name out<11:0> -origin {960 920}
+
+}
+
+proc ICON_delay_12_try args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {dly 1}}
+icon_term -type input -origin {-100 10} -name clk
+icon_term -type input -origin {-100 30} -name rst
+icon_term -type output -origin {40 0} -name out<11:0>
+icon_term -type input -origin {-100 -10} -name in<11:0>
+icon_property -origin {-90 -10} -label in<11:0>
+icon_property -origin {-90 10} -label clk
+icon_property -origin {-90 30} -label rst
+icon_property -origin {30 0} -anchor e -label out<11:0>
+icon_property -origin {-90 -60} -label {$name}
+icon_property -origin {-90 -40} -label delay_12_try
+  icon_line -100 -50 40 -50 40 50 -100 50 -100 -50
+icon_property -origin {-90 60} -label {dly=$dly}
+  icon_property -origin {-90 120} -type user -name name -default x
+  icon_property -origin {-90 140} -type user -name dly -default 1
+}
+

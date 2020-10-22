@@ -1,0 +1,17 @@
+proc SCHEMATIC_from24to16 {} {
+make input -name in<23:0> -origin {0 0}
+make output -name out<15:0> -origin {80 0}
+}
+
+proc ICON_from24to16 args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type input -origin {-70 10} -name in<23:0>
+icon_term -type output -origin {50 10} -name out<15:0>
+icon_property -origin {-60 10} -label in<23:0>
+icon_property -origin {40 10} -anchor e -label out<15:0>
+icon_property -origin {-60 -40} -label {$name}
+icon_property -origin {-60 -20} -label from24to16
+  icon_line -70 -30 50 -30 50 30 -70 30 -70 -30
+  icon_property -origin {-120 80} -type user -name name -default x
+}
+

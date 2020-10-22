@@ -1,0 +1,31 @@
+proc SCHEMATIC_input_pulse_dds {} {
+make input -name sys_clk -origin {80 0}
+make input -name sys_rst -origin {80 40}
+make output -name dac_data<9:0> -origin {160 40}
+make input -name f_required<15:0> -origin {80 80}
+make output -name dac_data_valid -origin {160 80}
+make input -name f_required_valid -origin {80 120}
+}
+
+proc ICON_input_pulse_dds args {
+
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type input -origin {-100 -20} -name sys_clk
+icon_term -type input -origin {-100 0} -name sys_rst
+icon_term -type input -origin {-100 40} -name f_required<15:0>
+icon_term -type output -origin {100 -20} -name dac_data<9:0>
+icon_term -type output -origin {100 0} -name dac_data_valid
+icon_term -type input -origin {-100 20} -name f_required_valid
+icon_property -origin {-90 -20} -label sys_clk
+icon_property -origin {-90 0} -label sys_rst
+icon_property -origin {-90 20} -label f_required_valid
+icon_property -origin {-90 40} -label f_required<15:0>
+icon_property -origin {90 -20} -anchor e -label dac_data<9:0>
+icon_property -origin {90 0} -anchor e -label dac_data_valid
+icon_property -origin {-90 -70} -label {$name}
+icon_property -origin {-90 -50} -label input_pulse_dds
+  icon_line -100 -60 100 -60 100 60 -100 60 -100 -60
+  icon_property -origin {-90 130} -type user -name name -default x
+
+}
+

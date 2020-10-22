@@ -1,0 +1,26 @@
+proc SCHEMATIC_state_gen_mult_try {} {
+make output -name P<32:0> -origin {-160 60}
+make input -name A<15:0> -origin {-320 0}
+make input -name B<15:0> -origin {-320 40}
+make input -name C<31:0> -origin {-320 80}
+make input -name CLK -origin {-320 120}
+}
+
+proc ICON_state_gen_mult_try args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type input -origin {-100 -20} -name A<15:0>
+icon_term -type input -origin {-100 0} -name B<15:0>
+icon_term -type input -origin {-100 20} -name C<31:0>
+icon_term -type input -origin {-100 40} -name CLK
+icon_term -type output -origin {100 10} -name P<32:0>
+icon_property -origin {-90 -20} -label A<15:0>
+icon_property -origin {-90 0} -label B<15:0>
+icon_property -origin {-90 20} -label C<31:0>
+icon_property -origin {-90 40} -label CLK
+icon_property -origin {90 10} -anchor e -label P<32:0>
+icon_property -origin {-90 -70} -label {$name}
+icon_property -origin {-90 -50} -label state_gen_mult_try
+  icon_line -100 -60 100 -60 100 60 -100 60 -100 -60
+  icon_property -origin {-90 130} -type user -name name -default x
+}
+

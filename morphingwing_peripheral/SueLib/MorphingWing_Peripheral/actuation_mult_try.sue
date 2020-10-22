@@ -1,0 +1,34 @@
+proc SCHEMATIC_actuation_mult_try {} {
+make input -name A<11:0> -origin {270 160}
+make input -name B<7:0> -origin {270 240}
+make input -name C<19:0> -origin {270 320}
+make input -name CLK -origin {270 480}
+make input -name SCLR -origin {270 560}
+make output -name P<20:0> -origin {560 360}
+make input -name D<11:0> -origin {270 400}
+}
+
+proc ICON_actuation_mult_try args {
+
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type input -origin {-40 -70} -name A<11:0>
+icon_term -type input -origin {-40 -40} -name B<7:0>
+icon_term -type input -origin {-40 -10} -name C<19:0>
+icon_term -type input -origin {-40 20} -name D<11:0>
+icon_term -type input -origin {-40 50} -name CLK
+icon_term -type input -origin {-40 70} -name SCLR
+icon_term -type output -origin {80 0} -name P<20:0>
+icon_property -origin {70 0} -anchor e -label P<20:0>
+icon_property -origin {-40 -90} -label {$name}
+icon_property -origin {50 -90} -label actuation_mult_try
+  icon_line -40 -80 80 -80 80 80 -40 80 -40 -80
+  icon_property -origin {-70 100} -type user -name name -default x
+icon_property -origin {-30 -70} -label A<11:0>
+icon_property -origin {-30 -40} -label B<7:0>
+icon_property -origin {-30 -10} -label C<19:0>
+icon_property -origin {-30 20} -label D<11:0>
+icon_property -origin {-30 50} -label CLK
+icon_property -origin {-30 70} -label SCLR
+
+}
+

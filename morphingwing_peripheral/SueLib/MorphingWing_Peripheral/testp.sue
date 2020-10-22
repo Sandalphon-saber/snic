@@ -1,0 +1,5 @@
+proc SCHEMATIC_testp {} {
+make output -name out -origin {0 240}
+  make_text -origin {-240 410} -text {*this module is just for test}
+}
+

@@ -1,0 +1,23 @@
+proc SCHEMATIC_double2bool12 {} {
+
+
+make input -name in -origin {580 310}
+make output -name out<11:0> -origin {670 310}
+
+
+}
+
+proc ICON_double2bool12 args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {scale1 0}}
+icon_term -type input -origin {-20 0} -name in
+icon_term -type output -origin {100 0} -name out<11:0>
+icon_property -origin {90 10} -anchor e -label out<11:0>
+icon_property -origin {-20 -40} -label {$name}
+icon_property -origin {0 -20} -label double2bool12
+  icon_line -20 -30 100 -30 100 30 -20 30 -20 -30
+  icon_property -origin {-30 100} -type user -name name -default x
+icon_property -origin {-10 40} -label {scale1 = $scale1}
+  icon_property -origin {-30 120} -type user -name scale1 -default 0
+icon_property -origin {-10 10} -label in
+}
+

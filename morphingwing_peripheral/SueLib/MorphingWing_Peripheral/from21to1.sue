@@ -1,0 +1,19 @@
+proc SCHEMATIC_from21to1 {} {
+
+make input -name in<20:0> -origin {-20 80}
+make output -name out -origin {160 80}
+
+}
+
+proc ICON_from21to1 args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type input -origin {-100 10} -name in<20:0>
+icon_term -type output -origin {-10 0} -name out
+icon_property -origin {-90 10} -label in<20:0>
+icon_property -origin {-20 10} -anchor e -label out
+icon_property -origin {-90 -40} -label {$name}
+icon_property -origin {-90 -20} -label from21to1
+  icon_line -100 -30 -10 -30 -10 30 -100 30 -100 -30
+  icon_property -origin {-140 50} -type user -name name -default x
+}
+

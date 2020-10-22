@@ -1,0 +1,206 @@
+proc SCHEMATIC_syn_top {} {
+make delay_try -name xi1 -dly 104 -origin {140 -110}
+make if_circuit_table_try -name xi2 -origin {500 -380}
+make delay_1_try -name xi3 -dly 3 -origin {540 -40}
+make constant_try -name sys_clk_option -origin {-860 -140}
+make constant_try -name sys_rst -origin {-660 100}
+make dac_try -name actuation_dac -origin {1820 -280}
+make dac_try -name feedback_dac -origin {1820 -70}
+make dac_try -name in_pulse_dac -origin {1820 150}
+make feedback_dds_try -name feedback_dds -origin {1330 -260}
+make actuation_try -name actuation -origin {870 -280}
+make input_state_gen_try -name input_state_gen -origin {840 190}
+make global -name gnd -origin {360 -170}
+make output -name actuation_out -origin {1960 -270}
+make output -name feedback_out -origin {1980 -60}
+make output -name in_pulse_out -origin {1980 160}
+make from10to12_low -name xi0 -origin {1610 40}
+make from11to12_low -name xi4 -origin {1570 -280}
+make input_from_file -name xi5 -origin {-780 640}
+make signal_source_2 -name sys_clk -freq 8e6 -origin {-690 -110}
+make half_16bit -name xi6 -origin {1150 240}
+make constant_try -name xi7 -origin {-70 -630}
+make double2bool12 -name xi8 -origin {70 -620}
+make sar_adc_try -name m_aux2 -clkdiv 80000 -origin {-240 570}
+make sar_adc_try -name m_aux3 -clkdiv 80000 -origin {-240 730}
+make input_pulse_dds -name input_pulse_dds -origin {1490 360}
+make sar_adc_try -name m_aux0 -clkdiv 100 -origin {-240 220}
+make sar_adc_try -name m_aux1 -clkdiv 100 -origin {-240 390}
+  make_wire 600 -460 710 -460
+  make_wire 710 -460 710 -290
+  make_wire 710 -290 770 -290
+  make_wire 600 -440 680 -440
+  make_wire 680 -440 680 -270
+  make_wire 680 -270 770 -270
+  make_wire 240 -110 320 -110
+  make_wire 320 -460 400 -460
+  make_wire 360 -420 360 -400
+  make_wire 360 -400 400 -400
+  make_wire 360 -420 -60 -420
+  make_wire 360 -420 400 -420
+  make_wire 400 -300 360 -300
+  make_wire 400 -280 360 -280
+  make_wire -60 -420 -60 -130
+  make_wire -60 -130 -60 -100
+  make_wire 30 -10 390 -10
+  make_wire 390 -160 640 -160
+  make_wire 640 -250 770 -250
+  make_wire 30 -100 -60 -100
+  make_wire 30 -100 70 -100
+  make_wire 640 -250 640 -160
+  make_wire 730 -50 730 -310
+  make_wire 730 -310 770 -310
+  make_wire 730 -50 640 -50
+  make_wire 750 -230 770 -230
+  make_wire 0 -80 -350 -80
+  make_wire 0 -80 70 -80
+  make_wire 640 -160 1180 -160
+  make_wire 1180 -270 1230 -270
+  make_wire 750 -60 1130 -60
+  make_wire 1130 -250 1230 -250
+  make_wire 750 -60 750 -230
+  make_wire 1180 -160 1710 -160
+  make_wire 1710 -160 1710 -250
+  make_wire 1710 -250 1800 -250
+  make_wire 1710 -40 1800 -40
+  make_wire 1710 180 1800 180
+  make_wire 1130 -110 1670 -110
+  make_wire 1670 -110 1670 -220
+  make_wire 1670 -220 1800 -220
+  make_wire 1670 -10 1800 -10
+  make_wire 1670 210 1800 210
+  make_wire 1090 -340 1640 -340
+  make_wire 1640 -340 1640 -300
+  make_wire 1640 -300 1800 -300
+  make_wire 1090 -230 1230 -230
+  make_wire 360 -300 360 -280
+  make_wire -350 -80 -350 110
+  make_wire -400 250 -340 250
+  make_wire -400 110 -590 110
+  make_wire -400 110 -350 110
+  make_wire -400 420 -340 420
+  make_wire -400 600 -340 600
+  make_wire -400 760 -340 760
+  make_wire -480 230 -340 230
+  make_wire -480 400 -340 400
+  make_wire -480 400 -480 580
+  make_wire -480 580 -340 580
+  make_wire -480 580 -480 740
+  make_wire -480 740 -340 740
+  make_wire -140 380 680 380
+  make_wire 680 250 830 250
+  make_wire -140 420 790 420
+  make_wire 790 270 830 270
+  make_wire -30 -130 70 -130
+  make_wire -140 720 280 720
+  make_wire 280 720 280 -440
+  make_wire 280 -440 400 -440
+  make_wire -30 -130 -30 560
+  make_wire 320 -460 320 -110
+  make_wire 0 -80 0 70
+  make_wire 30 -100 30 -10
+  make_wire -140 760 -110 760
+  make_wire -110 760 -110 -320
+  make_wire 400 -340 360 -340
+  make_wire 360 -340 360 -320
+  make_wire 360 -320 -110 -320
+  make_wire 360 -320 400 -320
+  make_wire 360 -230 410 -230
+  make_wire 410 -230 410 -50
+  make_wire 410 -50 440 -50
+  make_wire 360 -230 360 -280
+  make_wire 360 -230 360 -170
+  make_wire 390 -10 410 -10
+  make_wire 410 -10 410 -30
+  make_wire 410 -30 440 -30
+  make_wire 420 70 420 -10
+  make_wire 420 -10 440 -10
+  make_wire 420 70 0 70
+  make_wire 420 70 750 70
+  make_wire 1130 -250 1130 -110
+  make_wire 1890 -270 1960 -270
+  make_wire 1980 160 1890 160
+  make_wire 1630 50 1740 50
+  make_wire 1430 -270 1470 -270
+  make_wire 1590 -270 1630 -270
+  make_wire 830 310 750 310
+  make_wire 830 290 390 290
+  make_wire 1800 130 1740 130
+  make_wire -480 20 -930 20
+  make_wire -930 640 -900 640
+  make_wire -480 20 -430 20
+  make_wire -430 -130 -560 -130
+  make_wire -430 -130 -60 -130
+  make_wire -30 560 -140 560
+  make_wire 830 210 -140 210
+  make_wire -430 -130 -430 20
+  make_wire 750 -60 750 70
+  make_wire 750 70 750 310
+  make_wire 790 270 790 420
+  make_wire 390 -160 390 -10
+  make_wire 390 -10 390 290
+  make_wire 680 250 680 380
+  make_wire 1130 -110 1130 -60
+  make_wire 1130 -60 1130 -10
+  make_wire 1180 -270 1180 -160
+  make_wire 1180 -160 1180 -30
+  make_wire 1740 50 1740 130
+  make_wire 990 300 1010 300
+  make_wire 1010 300 1010 250
+  make_wire 1010 250 1050 250
+  make_wire 1320 -30 1180 -30
+  make_wire 1300 -10 1130 -10
+  make_wire -480 20 -480 230
+  make_wire -480 230 -480 400
+  make_wire -400 110 -400 250
+  make_wire -400 250 -400 420
+  make_wire -930 20 -930 640
+  make_wire 0 -620 50 -620
+  make_wire 170 -620 200 -620
+  make_wire 200 -380 200 -620
+  make_wire 350 -380 350 -360
+  make_wire 350 -360 400 -360
+  make_wire 350 -380 200 -380
+  make_wire 350 -380 400 -380
+  make_wire -780 630 -430 630
+  make_wire -430 210 -340 210
+  make_wire -600 380 -340 380
+  make_wire -600 650 -780 650
+  make_wire 1390 340 1320 340
+  make_wire 1390 360 1300 360
+  make_wire 1390 380 1090 380
+  make_wire 990 320 1090 320
+  make_wire 1390 400 1250 400
+  make_wire 1170 250 1250 250
+  make_wire 1630 340 1590 340
+  make_wire 1320 -30 1320 340
+  make_wire 1630 270 1630 340
+  make_wire 1090 320 1090 380
+  make_wire 1300 -10 1300 360
+  make_wire 1250 250 1250 400
+  make_wire 1630 270 1440 270
+  make_wire 1440 50 1510 50
+  make_wire 1440 50 1440 270
+  make_wire -400 560 -340 560
+  make_wire -400 560 -400 600
+  make_wire -400 560 -400 420
+  make_wire -400 720 -340 720
+  make_wire -400 720 -400 600
+  make_wire -400 720 -400 760
+  make_wire -430 210 -430 630
+  make_wire -600 380 -600 650
+  make_wire 1630 -270 1630 -90
+  make_wire 1630 -90 1800 -90
+  make_wire 1710 -40 1710 -160
+  make_wire 1710 -40 1710 180
+  make_wire 1670 -10 1670 -110
+  make_wire 1670 -10 1670 210
+  make_wire 1890 -60 1980 -60
+  make_wire 1090 -230 1090 -340
+  make_wire 970 -230 1090 -230
+  make_text -origin {-690 900} -text {*This system reproducts an morphing_wing FPGA project. }
+  make_text -origin {-690 920} -text {we try our best to make the function of each module  consistent with that of the FPGA}
+  make_text -origin {-690 950} -text {But when simulating with the snic,we find that the function of system is not right}
+  make_text -origin {-690 970} -text {So far,we do not know the specific reason}
+}
+

@@ -1,0 +1,26 @@
+proc SCHEMATIC_input_from_file {} {
+
+
+
+make output -name vauxp_0_out -origin {480 160}
+make output -name vauxp_1_out -origin {480 200}
+make input -name clk -origin {420 180}
+
+
+
+}
+
+proc ICON_input_from_file args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type output -origin {0 -10} -name vauxp_0_out
+icon_term -type output -origin {0 10} -name vauxp_1_out
+icon_term -type input -origin {-120 0} -name clk
+icon_property -origin {-100 -50} -label {$name}
+icon_property -origin {-100 -30} -label input_from_file
+  icon_line -120 -40 0 -40 0 30 -120 30 -120 -40
+  icon_property -origin {-110 50} -type user -name name -default x
+icon_property -origin {-80 -10} -label vauxp_0_out
+icon_property -origin {-110 0} -label clk
+icon_property -origin {-80 10} -label vauxp_1_out
+}
+

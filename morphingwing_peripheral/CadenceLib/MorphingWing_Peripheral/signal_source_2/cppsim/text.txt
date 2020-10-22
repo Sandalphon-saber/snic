@@ -1,0 +1,32 @@
+module: signal_source_2
+parameters: int stype, double freq
+inputs: double phase
+outputs: double_interp out double_interp clk
+classes: SigGen siggen1("square",freq,Ts), List list1();
+static_variables: double clk_prev
+init: 
+clk_prev = -1.0;
+if (stype == 0)
+   siggen1.set("square",freq,Ts);
+else if (stype == 1)
+   siggen1.set("sine",freq,Ts);
+else if (stype == 2)
+   {
+   list1.inp(1);
+   list1.inp(1);
+   siggen1.set("impulse",freq,Ts,list1);
+   }
+else if (stype == 3)
+   siggen1.set("prbs",freq,Ts);
+else if (stype == 4)
+   siggen1.set("impulse",freq,Ts);
+code:
+if (stype == 3)
+   {
+   clk = clk_prev;
+   clk_prev = siggen1.square;
+   }
+siggen1.inp(phase);
+out = siggen1.out;
+if (stype != 3)
+   clk = siggen1.square;

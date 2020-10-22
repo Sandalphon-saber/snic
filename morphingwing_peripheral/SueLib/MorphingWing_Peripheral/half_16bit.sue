@@ -1,0 +1,17 @@
+proc SCHEMATIC_half_16bit {} {
+make input -name in<15:0> -origin {800 0}
+make output -name out<15:0> -origin {880 0}
+}
+
+proc ICON_half_16bit args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type input -origin {-100 10} -name in<15:0>
+icon_term -type output -origin {20 10} -name out<15:0>
+icon_property -origin {-90 10} -label in<15:0>
+icon_property -origin {20 10} -anchor e -label out<15:0>
+icon_property -origin {-90 -40} -label {$name}
+icon_property -origin {-90 -20} -label half_16bit
+  icon_line -100 -30 20 -30 20 30 -100 30 -100 -30
+  icon_property -origin {-120 60} -type user -name name -default x
+}
+

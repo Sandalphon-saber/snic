@@ -1,0 +1,20 @@
+proc SCHEMATIC_constant_try {} {
+
+
+make output -name out -origin {1270 1000}
+
+
+}
+
+proc ICON_constant_try args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {consval 0}}
+icon_term -type output -origin {70 10} -name out
+icon_property -origin {60 10} -anchor e -label out
+icon_property -origin {-20 -40} -label {$name}
+icon_property -origin {-10 -10} -label constant_try
+  icon_line -20 -20 70 -20 70 40 -20 40 -20 -20
+  icon_property -origin {-50 80} -type user -name name -default x
+icon_property -origin {0 50} -label {val=$consval}
+  icon_property -origin {-50 100} -type user -name consval -default 0
+}
+

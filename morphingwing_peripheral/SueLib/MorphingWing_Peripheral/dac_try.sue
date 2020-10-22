@@ -1,0 +1,24 @@
+proc SCHEMATIC_dac_try {} {
+make output -name out -origin {720 440}
+make input -name clk -origin {610 450}
+make input -name rst -origin {610 490}
+make input -name in<11:0> -origin {610 410}
+}
+
+proc ICON_dac_try args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type output -origin {70 10} -name out
+icon_term -type input -origin {-20 30} -name clk
+icon_term -type input -origin {-20 60} -name rst
+icon_term -type input -origin {-20 -20} -name in<11:0>
+icon_property -origin {-20 -50} -label {$name}
+  icon_line -20 -40 70 -40 70 70 -20 70 -20 -40
+  icon_property -origin {-90 90} -type user -name name -default x
+icon_property -origin {-10 -20} -label in<11:0>
+icon_property -origin {-10 30} -label clk
+icon_property -origin {-10 60} -label rst
+icon_property -origin {50 10} -label out
+icon_property -origin {0 0} -label dac_xilinx
+  icon_line -20 20 -10 30 -20 40
+}
+

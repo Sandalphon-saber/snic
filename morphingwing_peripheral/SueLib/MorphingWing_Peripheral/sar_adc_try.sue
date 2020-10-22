@@ -1,0 +1,32 @@
+proc SCHEMATIC_sar_adc_try {} {
+
+make output -name out<11:0> -origin {880 -1240}
+make input -name clk -origin {720 -1240}
+make input -name reset -origin {720 -1200}
+make input -name in -origin {720 -1280}
+make output -name out_valid -origin {880 -1200}
+
+}
+
+proc ICON_sar_adc_try args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {vref 1.0} {clkdiv 1.0}}
+icon_term -type input -origin {-100 10} -name clk
+icon_term -type input -origin {-100 30} -name reset
+icon_term -type output -origin {100 -10} -name out<11:0>
+icon_term -type input -origin {-100 -10} -name in
+icon_term -type output -origin {100 30} -name out_valid
+icon_property -origin {-90 -10} -label in
+icon_property -origin {-90 10} -label clk
+icon_property -origin {-90 30} -label reset
+icon_property -origin {90 -10} -anchor e -label out<11:0>
+icon_property -origin {-90 -60} -label {$name}
+icon_property -origin {-90 -40} -label SAR_adc_try
+  icon_line -100 -50 100 -50 100 50 -100 50 -100 -50
+icon_property -origin {-90 60} -label {vref=$vref}
+  icon_property -origin {-90 120} -type user -name name -default x
+  icon_property -origin {-90 140} -type user -name vref -default 1.0
+icon_property -origin {-90 80} -label {clkdiv=$clkdiv}
+  icon_property -origin {-90 160} -type user -name clkdiv -default 1.0
+icon_property -origin {40 30} -label out_valid
+}
+

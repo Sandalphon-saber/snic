@@ -1,0 +1,47 @@
+proc SCHEMATIC_if_circuit_table_try {} {
+make input -name addra<11:0> -origin {480 80}
+make input -name addrb<11:0> -origin {480 120}
+make input -name clka -origin {480 160}
+make input -name clkb -origin {480 200}
+make input -name dina<11:0> -origin {480 240}
+make input -name dinb<11:0> -origin {480 280}
+make input -name ena -origin {480 320}
+make input -name enb -origin {480 360}
+make input -name wea -origin {480 400}
+make input -name web -origin {480 440}
+make output -name douta<11:0> -origin {640 160}
+make output -name doutb<11:0> -origin {640 240}
+}
+
+proc ICON_if_circuit_table_try args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type input -origin {-100 -80} -name addra<11:0>
+icon_term -type input -origin {-100 -60} -name addrb<11:0>
+icon_term -type input -origin {-100 -40} -name clka
+icon_term -type input -origin {-100 -20} -name clkb
+icon_term -type input -origin {-100 0} -name dina<11:0>
+icon_term -type input -origin {-100 20} -name dinb<11:0>
+icon_term -type input -origin {-100 40} -name ena
+icon_term -type input -origin {-100 60} -name enb
+icon_term -type input -origin {-100 80} -name wea
+icon_term -type input -origin {-100 100} -name web
+icon_term -type output -origin {100 -80} -name douta<11:0>
+icon_term -type output -origin {100 -60} -name doutb<11:0>
+icon_property -origin {-90 -80} -label addra<11:0>
+icon_property -origin {-90 -60} -label addrb<11:0>
+icon_property -origin {-90 -40} -label clka
+icon_property -origin {-90 -20} -label clkb
+icon_property -origin {-90 0} -label dina<11:0>
+icon_property -origin {-90 20} -label dinb<11:0>
+icon_property -origin {-90 40} -label ena
+icon_property -origin {-90 60} -label enb
+icon_property -origin {-90 80} -label wea
+icon_property -origin {-90 100} -label web
+icon_property -origin {90 -80} -anchor e -label douta<11:0>
+icon_property -origin {90 -60} -anchor e -label doutb<11:0>
+icon_property -origin {-90 -130} -label {$name}
+icon_property -origin {-90 -110} -label if_circuit_table_try
+  icon_line -100 -120 100 -120 100 120 -100 120 -100 -120
+  icon_property -origin {-90 150} -type user -name name -default x
+}
+
