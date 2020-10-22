@@ -1,0 +1,27 @@
+proc SCHEMATIC_z_en {} {
+
+make input -name y -origin {1760 1120}
+make output -name zp -origin {1920 1040}
+make output -name zn -origin {1920 1120}
+make output -name zn_next -origin {1920 1180}
+
+}
+
+proc ICON_z_en args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {tta 1.0}}
+icon_term -type input -origin {-50 0} -name y
+icon_term -type output -origin {50 0} -name zp
+icon_term -type output -origin {50 20} -name zn
+icon_term -type output -origin {50 -30} -name zn_next
+icon_property -origin {-40 0} -label y
+icon_property -origin {40 0} -anchor e -label zp
+icon_property -origin {40 20} -anchor e -label zn
+icon_property -origin {-50 -50} -label {$name}
+icon_property -origin {-40 -30} -label z_en
+  icon_line -50 -40 50 -40 50 40 -50 40 -50 -40
+  icon_property -origin {-90 110} -type user -name name -default x
+icon_property -origin {-50 60} -label {tta=$tta}
+  icon_property -origin {-90 130} -type user -name tta -default 1.0
+icon_property -origin {0 -30} -label zn_next
+}
+

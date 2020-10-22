@@ -11,8 +11,8 @@ make output -name y1 -origin {1080 600}
 make output -name y2 -origin {1340 600}
 make name_net -orient R270 -name clr -origin {1190 620}
 make constant -name xi24 -origin {830 620}
-make abstractIF -name xi20 -v_th 60 -i_leak 0.2 -v_rest 0 -r_time 0 -rc 1.0/0.5 -origin {1030 600}
-make abstractIF -name xi21 -v_th 60 -i_leak 0.2 -v_rest 0 -r_time 0 -rc 1.0/0.5 -origin {1290 600}
+make abstractIF -name xi20 -v_th 60 -i_leak 0.2 -v_rest 0 -r_t 0 -rc 1.0/0.5 -origin {1030 600}
+make abstractIF -name xi21 -v_th 60 -i_leak 0.2 -v_rest 0 -r_t 0 -rc 1.0/0.5 -origin {1290 600}
 make input -name x1_w -origin {800 130}
 make input -name x2_w -origin {800 290}
 make name_net -name x1_w -origin {1120 130}

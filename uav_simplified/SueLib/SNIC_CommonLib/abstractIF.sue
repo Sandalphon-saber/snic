@@ -3,11 +3,12 @@ make input -name in_i -origin {1470 1040}
 make input -name clr -origin {1470 1060}
 make output -name out_v -origin {1620 1040}
 make LIF_simplified -name xi0 -v_th v_th -i_leak i_leak -v_rest v_rest -r_t r_t -rc rc -origin {1570 1040}
-  make_text -origin {1250 1210} -text {*r_time represents the duration of the refractory period}
+  make_text -origin {1250 1210} -text {*r_t represents the duration of the refractory period}
   make_text -origin {1250 1230} -text {*rc represents the product of capacitance and resistance,which also represents the time constant tau}
 }
 
 proc ICON_abstractIF args {
+
   icon_setup $args {{origin {0 0}} {orient R0} {name x} {v_th 1.0} {i_leak 1.0} {v_rest -1.0} {r_t 1e-3} {rc 1.0}}
 icon_term -type input -origin {-100 0} -name in_i
 icon_term -type output -origin {50 0} -name out_v
@@ -29,5 +30,6 @@ icon_property -origin {-90 100} -label {v_rest=$v_rest V}
 icon_property -origin {-90 120} -label {r_t=$r_t s}
 icon_property -origin {-90 140} -label {rc=$rc}
   icon_property -origin {-100 270} -type user -name rc -default 1.0
+
 }
 

@@ -31,7 +31,7 @@ if(clr==-1){
 		r_t_number-=1;
 		if(r_t_number<=0){
 			flag=0;
-			r_t_number=abs_t/Ts;	
+			r_t_number=r_t/Ts;	
 		}
 	}
  

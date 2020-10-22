@@ -1,0 +1,19 @@
+proc SCHEMATIC_xw {} {
+make input -name is -origin {2320 1520}
+make output -name xw -origin {2400 1520}
+}
+
+proc ICON_xw args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {alpha 5.0}}
+icon_term -type input -origin {-40 0} -name is
+icon_term -type output -origin {40 0} -name xw
+icon_property -origin {-30 0} -label is
+icon_property -origin {30 0} -anchor e -label xw
+icon_property -origin {-40 -40} -label {$name}
+icon_property -origin {-30 -20} -label xw
+  icon_line -40 -30 40 -30 40 30 -40 30 -40 -30
+  icon_property -origin {-90 100} -type user -name name -default x
+icon_property -origin {-40 50} -label {alpha=$alpha}
+  icon_property -origin {-90 120} -type user -name alpha -default 5.0
+}
+

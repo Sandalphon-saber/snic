@@ -1,0 +1,4 @@
+proc SCHEMATIC_test_us {} {
+make output -name out -origin {1760 1520}
+}
+

@@ -1,0 +1,17 @@
+proc SCHEMATIC_top_2d {} {
+make add2 -name xi2 -origin {1140 1140}
+make top -name xi1 -s0 0.3 -w1 1.2 -w4 1.5 -w3 2.3857 -w2 3.7258 -origin {940 1230}
+make output -name f1 -origin {1070 1070}
+make output -name f2 -origin {1070 1230}
+make output -name f -origin {1170 1140}
+make top -name xi0 -w4 3 -w3 2 -w2 3.5 -origin {940 1070}
+  make_wire 1040 1140 1110 1140
+  make_wire 1040 1070 1000 1070
+  make_wire 1040 1070 1070 1070
+  make_wire 1040 1170 1140 1170
+  make_wire 1040 1230 1000 1230
+  make_wire 1040 1230 1070 1230
+  make_wire 1040 1170 1040 1230
+  make_wire 1040 1070 1040 1140
+}
+

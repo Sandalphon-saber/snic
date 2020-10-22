@@ -1,16 +1,16 @@
 /////////////////////////////////////////////////////////////
 // CppSim Sim File: test.par
-// Cell: test_us
+// Cell: delta_s
 // Library: uav_simplified
 /////////////////////////////////////////////////////////////
 
 // Number of simulation time steps
 // Example: num_sim_steps: 10e3
-num_sim_steps: 10e5
+num_sim_steps: 
 
 // Time step of simulator (in seconds)
 // Example: Ts: 1/10e9
-Ts: 1/10e3
+Ts: 
 
 // Output File name
 // Example:  name below produces test.tr0, test.tr1, ...

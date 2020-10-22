@@ -1,0 +1,132 @@
+proc SCHEMATIC_top {} {
+make x_sign_en -name xi3 -origin {1450 730}
+make x_sign_en -name xi4 -origin {1450 950}
+make xw -name xi7 -origin {1160 640}
+make xw -name xi8 -origin {1160 1150}
+make name_net -name xw_2 -origin {1220 1150}
+make name_net -name xw_1 -origin {1220 640}
+make name_net -name xw_1 -origin {1570 840}
+make name_net -name xw_2 -origin {1570 870}
+make z_en -name xi10 -origin {2050 920}
+make z_en -name xi11 -origin {2050 1070}
+make add2 -name xi12 -origin {2190 1070}
+make add2 -name xi13 -origin {2190 920}
+make name_net -name znn1 -origin {2130 890}
+make name_net -name znn2 -origin {2130 1040}
+make add2 -name xi14 -origin {2120 670}
+make name_net -name znn1 -origin {2090 670}
+make name_net -orient RXY -name znn2 -origin {2120 700}
+make name_net -name z_sum -origin {2170 670}
+make name_net -name z_sum -origin {1450 690}
+make name_net -name z_sum -origin {1450 910}
+make constant -name xi15 -origin {1020 970}
+make output -name out -origin {1060 790}
+make delta_s -orient RXY -name xi9 -sen_min 0.02 -sen_max 0.02 -origin {1030 1270}
+make actuator_s -name xi6 -origin {1830 1190}
+make abstractIF -name xi2 -v_th 6 -i_leak 0.004 -v_rest 0 -rc 1.0/1.8 -origin {1300 730}
+make snic2_2 -name xi5 -w_max 3000 -w1 w1 -w4 w4 -w3 w3 -w2 w2 -origin {1700 820}
+make abstractIF -name xi1 -v_th 6 -i_leak 0.004 -v_rest 0 -rc 1.0/1.8 -origin {1300 950}
+make sensor_io_s -name xi0 -s0 s0 -origin {1010 820}
+  make_wire 1120 820 1120 730
+  make_wire 1120 730 1200 730
+  make_wire 1120 840 1120 950
+  make_wire 1120 950 1200 950
+  make_wire 1470 750 1500 750
+  make_wire 1090 640 1120 640
+  make_wire 1090 820 1060 820
+  make_wire 1090 820 1120 820
+  make_wire 1090 1150 1120 1150
+  make_wire 1090 840 1060 840
+  make_wire 1090 840 1120 840
+  make_wire 1740 1210 1770 1210
+  make_wire 1700 1190 1770 1190
+  make_wire 1470 970 1500 970
+  make_wire 1500 800 1620 800
+  make_wire 1220 1150 1200 1150
+  make_wire 1220 640 1200 640
+  make_wire 1940 920 2000 920
+  make_wire 2160 920 2100 920
+  make_wire 2100 940 2150 940
+  make_wire 2150 970 2190 970
+  make_wire 2190 970 2190 950
+  make_wire 2220 920 2250 920
+  make_wire 2100 1070 2160 1070
+  make_wire 2100 1090 2150 1090
+  make_wire 2150 1090 2150 1130
+  make_wire 2190 1100 2190 1130
+  make_wire 2220 1070 2310 1070
+  make_wire 2100 890 2130 890
+  make_wire 2100 1040 2130 1040
+  make_wire 1140 750 1200 750
+  make_wire 1140 970 1200 970
+  make_wire 2150 670 2170 670
+  make_wire 1090 840 1090 1150
+  make_wire 1090 640 1090 820
+  make_wire 1620 780 1500 780
+  make_wire 1780 820 2310 820
+  make_wire 1780 780 2250 780
+  make_wire 1740 1070 2000 1070
+  make_wire 1700 1040 1940 1040
+  make_wire 1570 840 1620 840
+  make_wire 1570 870 1620 870
+  make_wire 1060 970 1140 970
+  make_wire 1140 750 1140 970
+  make_wire 2250 780 2250 920
+  make_wire 1740 900 1740 1070
+  make_wire 1740 1070 1740 1210
+  make_wire 1700 900 1700 1040
+  make_wire 1700 1040 1700 1190
+  make_wire 1500 800 1500 970
+  make_wire 1500 750 1500 780
+  make_wire 920 820 960 820
+  make_wire 1890 1200 1920 1200
+  make_wire 1920 1260 1070 1260
+  make_wire 990 1260 920 1260
+  make_wire 920 820 920 1260
+  make_wire 1920 1200 1920 1260
+  make_wire 1940 920 1940 1040
+  make_wire 2150 940 2150 970
+  make_wire 2310 820 2310 1070
+  make_wire 2150 1130 2190 1130
+}
+
+proc ICON_top args {
+
+
+
+
+
+
+
+
+
+
+  icon_setup $args {{origin {0 0}} {orient R0} {name x} {s0 5.0} {w1 1.0} {w4 1.0} {w3 1.0} {w2 1.0}}
+icon_term -type output -origin {60 0} -name out
+icon_property -origin {-60 -30} -label {$name}
+icon_property -origin {-50 -10} -label top
+  icon_line -60 -20 60 -20 60 20 -60 20 -60 -20
+  icon_property -origin {-70 110} -type user -name name -default x
+icon_property -origin {-60 30} -label {s0=$s0}
+  icon_property -origin {-70 130} -type user -name s0 -default 5.0
+  icon_property -origin {-70 150} -type user -name w1 -default 1.0
+  icon_property -origin {-70 240} -type user -name w4 -default 1.0
+  icon_property -origin {-70 210} -type user -name w3 -default 1.0
+  icon_property -origin {-70 180} -type user -name w2 -default 1.0
+icon_property -origin {-60 50} -label {w1=$w1}
+icon_property -origin {10 50} -label {w2=$w2}
+icon_property -origin {-60 80} -label {w3=$w3}
+icon_property -origin {10 80} -label {w4=$w4}
+icon_property -origin {40 0} -label out
+
+
+
+
+
+
+
+
+
+
+}
+

@@ -1,0 +1,22 @@
+proc SCHEMATIC_x_sign_en {} {
+
+make input -name x -origin {1440 880}
+make input -orient R90 -name z_sum -origin {1520 800}
+make output -name x_signed -origin {1600 880}
+
+}
+
+proc ICON_x_sign_en args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name x}}
+icon_term -type input -origin {-100 0} -name x
+icon_term -type output -origin {20 20} -name x_signed
+icon_term -type input -origin {0 -40} -orient R90 -name z_sum
+icon_property -origin {-90 0} -label x
+icon_property -origin {-20 -30} -label z_sum
+icon_property -origin {10 20} -anchor e -label x_signed
+icon_property -origin {-90 -50} -label {$name}
+icon_property -origin {-70 0} -label x_sign_en
+  icon_line -100 -40 20 -40 20 40 -100 40 -100 -40
+  icon_property -origin {-100 80} -type user -name name -default x
+}
+
