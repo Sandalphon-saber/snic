@@ -1,0 +1,19 @@
+module: x_sign_en
+description: if a negative z pulse is fired at moment t,the x should also be negative to meet the need of device conductance modification
+timing_sensitivity: 
+parameters:  
+inputs:  double x, double z_sum
+outputs:  double x_signed
+classes:  
+static_variables:  double x_temp
+init:  
+x_temp = 0;
+
+end:  
+code:  
+if(z_sum<0 && x_temp==1){
+  x_signed = -x_temp;
+}else {
+  x_signed = x;
+}
+x_temp=x;

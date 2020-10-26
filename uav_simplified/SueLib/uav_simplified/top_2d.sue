@@ -13,5 +13,10 @@ make top -name xi0 -w4 3 -w3 2 -w2 3.5 -origin {940 1070}
   make_wire 1040 1230 1070 1230
   make_wire 1040 1170 1040 1230
   make_wire 1040 1070 1040 1140
+  make_text -origin {880 1370} -text {*Every module 'top' represents one degree of freedom of system state }
+  make_text -origin {880 1390} -text {*The output of this module is the objective function F = ¡Æf }
+  make_text -origin {880 1350} -text {*This module is the top of whole system}
+  make_text -origin {880 1420} -text {*Limited by software, the initial value of the weight needs to be specified manually  }
+  make_text -origin {880 1440} -text {and cannot be implemented with random value}
 }
 

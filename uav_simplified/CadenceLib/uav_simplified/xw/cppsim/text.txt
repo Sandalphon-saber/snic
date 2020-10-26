@@ -1,5 +1,5 @@
 module: xw
-description: the width of input pulses which is used for modification of synstor conductance 
+description: calculate the width of input pulses which is used for modification of synstor conductance 
 timing_sensitivity: 
 parameters:  double alpha
 inputs:  double is

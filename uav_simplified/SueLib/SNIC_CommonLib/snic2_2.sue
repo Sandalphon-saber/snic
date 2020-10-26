@@ -1,5 +1,4 @@
 proc SCHEMATIC_snic2_2 {} {
-
 make input -name x1 -origin {800 100}
 make input -name x2 -origin {800 260}
 make input -orient R90 -name z1 -origin {1020 50}
@@ -16,17 +15,17 @@ make abstractIF -name xi21 -v_th 60 -i_leak 0.2 -v_rest 0 -r_t 0 -rc 1.0/0.5 -or
 make input -name x1_w -origin {800 130}
 make input -name x2_w -origin {800 290}
 make name_net -name x1_w -origin {1120 130}
-make name_net -name x2_w -origin {1160 290}
-make tamu_synstor -name xi0 -w0 w1 -w_max w_max -origin {980 110}
-make tamu_synstor -name xi1 -w0 w2 -w_max w_max -origin {1220 110}
-make tamu_synstor -name xi4 -w0 w3 -w_max w_max -origin {980 270}
+make name_net -name x2_w -origin {1120 290}
 make add2 -orient R90 -name xi2 -origin {1260 450}
 make add2 -orient R90 -name xi3 -origin {1020 440}
 make name_net -orient RXY -name o11 -origin {1020 160}
 make name_net -name o11 -origin {990 440}
-make tamu_synstor -name xi5 -w0 w4 -w_max w_max -origin {1220 270}
 make name_net -orient RXY -name o12 -origin {1260 160}
 make name_net -name o12 -origin {1230 450}
+make abstract_synapse -name xi5 -w0 w4 -w_max w_max -origin {1220 280}
+make abstract_synapse -name xi0 -w0 w1 -w_max w_max -origin {980 120}
+make abstract_synapse -name xi1 -w0 w2 -w_max w_max -origin {1220 120}
+make abstract_synapse -name xi4 -w0 w3 -w_max w_max -origin {980 280}
   make_wire 890 620 930 620
   make_wire 890 610 890 620
   make_wire 870 620 890 620
@@ -41,16 +40,12 @@ make name_net -name o12 -origin {1230 450}
   make_wire 1260 60 1320 60
   make_wire 1260 60 1260 40
   make_wire 1260 60 1260 80
-  make_wire 1260 210 1260 240
   make_wire 1320 210 1320 60
   make_wire 1020 60 1080 60
   make_wire 1020 230 1020 240
-  make_wire 1260 210 1320 210
   make_wire 1020 50 1020 60
   make_wire 1020 60 1020 80
   make_wire 1020 230 1080 230
-  make_wire 1020 320 1020 410
-  make_wire 1260 320 1260 420
   make_wire 1020 470 1020 510
   make_wire 1020 510 910 510
   make_wire 910 510 910 600
@@ -59,10 +54,17 @@ make name_net -name o12 -origin {1230 450}
   make_wire 1260 520 1170 520
   make_wire 1170 520 1170 600
   make_wire 1170 600 1190 600
-
+  make_wire 1260 210 1320 210
+  make_wire 1020 410 1020 320
+  make_wire 1260 210 1260 240
+  make_wire 1260 420 1260 320
+  make_wire 1160 290 1120 290
+  make_text -origin {810 840} -text {*This mudule is the core, contains synstor crossbar and the LIF neurons}
+  make_text -origin {810 890} -text {*The 'clr' is used for asynchronous reset}
 }
 
 proc ICON_snic2_2 args {
+
   icon_setup $args {{origin {0 0}} {orient R0} {name x} {w_max 1.0} {w1 1.0} {w4 1.0} {w3 1.0} {w2 1.0} {w_min 0.0}}
 icon_term -type input -origin {-80 -40} -name x1
 icon_term -type input -origin {-80 -20} -name x2
@@ -98,5 +100,6 @@ icon_property -origin {100 100} -label {w4=$w4}
 icon_property -origin {-10 10} -label 2*2
 icon_property -origin {100 150} -label {w_min=$w_min}
   icon_property -origin {-110 240} -type user -name w_min -default 0.0
+
 }
 

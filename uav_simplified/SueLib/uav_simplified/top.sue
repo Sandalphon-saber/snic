@@ -24,9 +24,9 @@ make output -name out -origin {1060 790}
 make delta_s -orient RXY -name xi9 -sen_min 0.02 -sen_max 0.02 -origin {1030 1270}
 make actuator_s -name xi6 -origin {1830 1190}
 make abstractIF -name xi2 -v_th 6 -i_leak 0.004 -v_rest 0 -rc 1.0/1.8 -origin {1300 730}
-make snic2_2 -name xi5 -w_max 3000 -w1 w1 -w4 w4 -w3 w3 -w2 w2 -origin {1700 820}
 make abstractIF -name xi1 -v_th 6 -i_leak 0.004 -v_rest 0 -rc 1.0/1.8 -origin {1300 950}
 make sensor_io_s -name xi0 -s0 s0 -origin {1010 820}
+make snic2_2 -name xi5 -w_max 20 -w1 w1 -w4 w4 -w3 w3 -w2 w2 -origin {1700 820}
   make_wire 1120 820 1120 730
   make_wire 1120 730 1200 730
   make_wire 1120 840 1120 950
@@ -88,9 +88,14 @@ make sensor_io_s -name xi0 -s0 s0 -origin {1010 820}
   make_wire 2150 940 2150 970
   make_wire 2310 820 2310 1070
   make_wire 2150 1130 2190 1130
+  make_text -origin {950 1420} -text {* This module is the main component of the system}
+  make_text -origin {950 1460} -text {* The order of execution of the instances is needed to be specify, ottherwise the simulation result may be wrong }
+  make_text -origin {950 1500} -text {*The modules 'x_sign_en'  'z_en' and 'actuator_s' are used for generation necessary signals  and can be relized by actual circuit}
+  make_text -origin {960 1520} -text {but the 'xw' represents the value of the pulse width, which is isolated just for simplicity of simulation}
 }
 
 proc ICON_top args {
+
 
 
 
@@ -118,6 +123,7 @@ icon_property -origin {10 50} -label {w2=$w2}
 icon_property -origin {-60 80} -label {w3=$w3}
 icon_property -origin {10 80} -label {w4=$w4}
 icon_property -origin {40 0} -label out
+
 
 
 

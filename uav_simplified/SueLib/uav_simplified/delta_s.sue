@@ -11,10 +11,11 @@ make rand_source_analog -name xi2 -a sen_min -b sen_max -origin {1560 1080}
   make_wire 1410 960 1590 960
   make_wire 1580 1090 1620 1090
   make_wire 1620 990 1620 1090
-  make_text -origin {1280 1200} -text {*the module simulate the modification of system state by actuation signal and environment noise}
+  make_text -origin {1260 1200} -text {*the module simulate the modification of system state by actuation signal and environment noise}
 }
 
 proc ICON_delta_s args {
+
 
 
 
@@ -36,6 +37,7 @@ icon_property -origin {-40 80} -label {sen_max=$sen_max}
   icon_property -origin {-80 150} -type user -name gsa -default 1.0
   icon_property -origin {-80 170} -type user -name sen_min -default 0
   icon_property -origin {-80 190} -type user -name sen_max -default 1.0
+
 
 
 

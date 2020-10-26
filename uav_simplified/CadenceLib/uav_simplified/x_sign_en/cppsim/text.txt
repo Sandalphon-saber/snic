@@ -1,5 +1,5 @@
 module: x_sign_en
-description: if a negative z pulse is fired at moment t,the x should also be negative to meet the need of device conductance modification
+description: This module is designed to implement the following logic:If a negative z pulse is fired at moment t,the x should also be negative to meet the need of device conductance modification
 timing_sensitivity: 
 parameters:  
 inputs:  double x, double z_sum

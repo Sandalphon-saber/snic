@@ -4,7 +4,9 @@ timing_sensitivity:
 parameters:  double coeff double s0
 inputs:  double ds
 outputs:  double is_1, double is_2 double f
-//f is the objective function which only used in simulation
+//s is the system state
+//f is the objective function 
+//is_1 and is_2 are the sensory current caused by sensor input s
 
 classes:  
 static_variables:  double s

@@ -36,6 +36,7 @@ if(clr==-1){
 	}
  
 	if(flag == 0){  
+           // INTEGRATION:
 	   // chen's formula --> -leak
 	   vm = vm + i_in*rc - i_leak;
        // for us,it may be -leak*rc;
@@ -43,6 +44,7 @@ if(clr==-1){
 	   //vm=vm+ (i_in<0?0:i_in*rc)-i_leak*rc;
 	   // vm can not be lower than v_rest
 	   vm=vm>v_rest?vm:v_rest;
+	   // FIRE: 
 	   if(vm>=v_th){
 	   		v_out = 1;
 			vm = v_rest;
